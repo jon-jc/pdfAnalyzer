@@ -106,7 +106,7 @@ export default function Landing() {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/academia-logo-8Uu0rWPKbDjcwZQJMtGtGXMGwZBZFe.png"
               alt="Academia.edu Logo"
               width={150}
-              height={30}
+              height={40}
               className="dark:invert"
             />
           </Link>
