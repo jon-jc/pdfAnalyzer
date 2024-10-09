@@ -2,19 +2,54 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Quote,
   Search,
   FileText,
-  BarChart,
   Laptop,
   FileDown,
   Bell,
+  LogIn,
+  UserPlus,
+  User,
+  Sun,
+  Moon,
+  Menu,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import {
+  Line,
+  Bar,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  LineChart,
+  BarChart,
+  Legend,
+  Tooltip as RechartsTooltip,
+} from "recharts";
 
 const features = [
   {
@@ -78,35 +113,220 @@ const testimonials = [
   },
 ];
 
+const chartData = [
+  { date: "2023-01", citations: 120, downloads: 350, readers: 1200 },
+  { date: "2023-02", citations: 150, downloads: 400, readers: 1350 },
+  { date: "2023-03", citations: 200, downloads: 450, readers: 1500 },
+  { date: "2023-04", citations: 180, downloads: 500, readers: 1650 },
+  { date: "2023-05", citations: 250, downloads: 550, readers: 1800 },
+  { date: "2023-06", citations: 300, downloads: 600, readers: 2000 },
+  { date: "2023-07", citations: 350, downloads: 650, readers: 2200 },
+  { date: "2023-08", citations: 400, downloads: 700, readers: 2400 },
+  { date: "2023-09", citations: 450, downloads: 750, readers: 2600 },
+  { date: "2023-10", citations: 500, downloads: 800, readers: 2800 },
+  { date: "2023-11", citations: 550, downloads: 850, readers: 3000 },
+  { date: "2023-12", citations: 600, downloads: 900, readers: 3200 },
+];
+
 export default function Pricing() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [theme, setTheme] = useState("light");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100">
-      <header className="py-6 px-4 sm:px-6 lg:px-8 border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto flex justify-between items-center">
-          <Image
-            src="/academialogo.png"
-            alt="Academia Logo"
-            width={150}
-            height={40}
-            className="dark:invert"
-          />
-          <nav className="hidden md:flex space-x-4">
-            {["Home", "Research", "About", "Pricing"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-          <Button variant="outline" className="hidden md:inline-flex">
-            Sign In
-          </Button>
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 dark:bg-black/80 dark:border-gray-800 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-black/60 transition-colors duration-300">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <Image
+              src="/academialogo.png"
+              alt="Academia.edu Logo"
+              width={150}
+              height={40}
+              className="dark:invert transition-all duration-300 hover:opacity-80"
+            />
+          </Link>
+          <div className="flex items-center space-x-4">
+            <nav className="hidden md:flex items-center space-x-4">
+              {[
+                { name: "About", href: "/about" },
+                { name: "Research", href: "/research" },
+                { name: "Pricing", href: "/pricing" },
+              ].map((item) => (
+                <TooltipProvider key={item.name}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link href={item.href}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Learn more about {item.name.toLowerCase()}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
+            </nav>
+            <div className="hidden sm:flex items-center space-x-2">
+              <Link href="/login">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                >
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
+                >
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  Register
+                </Button>
+              </Link>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
+              className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme === "dark" ? "dark" : "light"}
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
+                  <Image
+                    src="/avatar1.png"
+                    width={32}
+                    height={32}
+                    alt="User avatar"
+                    className="rounded-full"
+                  />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">John Doe</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      john.doe@example.com
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <FileText className="mr-2 h-4 w-4" />
+                  <span>My Papers</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <LogIn className="mr-2 h-4 w-4" />
+                  <span>Login</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  <span>Register</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Log out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden"
+            >
+              <nav className="flex flex-col space-y-2 p-4">
+                {[
+                  { name: "About", href: "/about" },
+                  { name: "Research", href: "/research" },
+                  { name: "Pricing", href: "/pricing" },
+                ].map((item) => (
+                  <Link key={item.name} href={item.href}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                    >
+                      {item.name}
+                    </Button>
+                  </Link>
+                ))}
+                <Link href="/login">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  >
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/register">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
+                  >
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Register
+                  </Button>
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main>
@@ -128,7 +348,7 @@ export default function Pricing() {
         </section>
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
-          <div className="container mx-auto">
+          <div className="container  mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">
               Used by academics at 15,770 universities
             </h2>
@@ -189,7 +409,94 @@ export default function Pricing() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold mb-12 text-center">
+              Powerful Analytics at Your Fingertips
+            </h2>
+            <Card className="w-full">
+              <CardHeader>
+                <CardTitle>Research Impact Overview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Tabs defaultValue="line" className="w-full">
+                  <TabsList className="mb-4">
+                    <TabsTrigger value="line">Line Chart</TabsTrigger>
+                    <TabsTrigger value="bar">Bar Chart</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="line">
+                    <div className="h-[400px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={chartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis
+                            dataKey="date"
+                            tickFormatter={(value) =>
+                              new Date(value).toLocaleDateString("en-US", {
+                                month: "short",
+                              })
+                            }
+                          />
+                          <YAxis yAxisId="left" />
+                          <YAxis yAxisId="right" orientation="right" />
+                          <RechartsTooltip />
+                          <Legend />
+                          <Line
+                            yAxisId="left"
+                            type="monotone"
+                            dataKey="citations"
+                            stroke="hsl(var(--primary))"
+                            activeDot={{ r: 8 }}
+                          />
+                          <Line
+                            yAxisId="left"
+                            type="monotone"
+                            dataKey="downloads"
+                            stroke="hsl(var(--secondary))"
+                          />
+                          <Line
+                            yAxisId="right"
+                            type="monotone"
+                            dataKey="readers"
+                            stroke="hsl(var(--accent))"
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="bar">
+                    <div className="h-[400px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={chartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis
+                            dataKey="date"
+                            tickFormatter={(value) =>
+                              new Date(value).toLocaleDateString("en-US", {
+                                month: "short",
+                              })
+                            }
+                          />
+                          <YAxis />
+                          <RechartsTooltip />
+                          <Legend />
+                          <Bar dataKey="citations" fill="hsl(var(--primary))" />
+                          <Bar
+                            dataKey="downloads"
+                            fill="hsl(var(--secondary))"
+                          />
+                          <Bar dataKey="readers" fill="hsl(var(--accent))" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center">
               What our users are saying
