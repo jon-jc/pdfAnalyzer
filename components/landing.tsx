@@ -43,7 +43,6 @@ import {
   X,
   ArrowRight,
   Globe,
-  Zap,
 } from "lucide-react";
 
 const fadeInUp = {
@@ -441,7 +440,7 @@ export default function Landing() {
                   description:
                     "Publish your research with fast and rigorous service through Academia.edu journals. Get instant worldwide dissemination of your work.",
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <motion.div key={item.title} variants={fadeInUp}>
                   <Card className="bg-white dark:bg-[#1e3a5f] transition-colors duration-200 h-full">
                     <CardContent className="p-6 flex flex-col h-full">
