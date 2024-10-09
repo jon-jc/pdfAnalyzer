@@ -139,42 +139,52 @@ export default function Landing() {
           </Link>
           <div className="flex items-center space-x-4">
             <nav className="hidden md:flex items-center space-x-4">
-              {["About", "Research", "Pricing"].map((item) => (
-                <TooltipProvider key={item}>
+              {[
+                { name: "About", href: "/about" },
+                { name: "Research", href: "/research" },
+                { name: "Pricing", href: "/pricing" },
+              ].map((item) => (
+                <TooltipProvider key={item.name}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                      >
-                        {item}
-                      </Button>
+                      <Link href={item.href}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Learn more about {item.toLowerCase()}</p>
+                      <p>Learn more about {item.name.toLowerCase()}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               ))}
             </nav>
             <div className="hidden sm:flex items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-              >
-                <LogIn className="mr-2 h-4 w-4" />
-                Login
-              </Button>
-              <Button
-                variant="default"
-                size="sm"
-                className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
-              >
-                <UserPlus className="mr-2 h-4 w-4" />
-                Register
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                >
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
+                >
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  Register
+                </Button>
+              </Link>
             </div>
             <Button
               variant="ghost"
@@ -269,32 +279,41 @@ export default function Landing() {
               className="md:hidden"
             >
               <nav className="flex flex-col space-y-2 p-4">
-                {["About", "Research", "Pricing"].map((item) => (
+                {[
+                  { name: "About", href: "/about" },
+                  { name: "Research", href: "/research" },
+                  { name: "Pricing", href: "/pricingAttachment" },
+                ].map((item) => (
+                  <Link key={item.name} href={item.href}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                    >
+                      {item.name}
+                    </Button>
+                  </Link>
+                ))}
+                <Link href="/login">
                   <Button
-                    key={item}
                     variant="ghost"
                     size="sm"
                     className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                   >
-                    {item}
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Login
                   </Button>
-                ))}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                >
-                  <LogIn className="mr-2 h-4 w-4" />
-                  Login
-                </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
-                >
-                  <UserPlus className="mr-2 h-4 w-4" />
-                  Register
-                </Button>
+                </Link>
+                <Link href="/register">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
+                  >
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Register
+                  </Button>
+                </Link>
               </nav>
             </motion.div>
           )}
@@ -667,34 +686,44 @@ export default function Landing() {
               {
                 title: "Product",
                 links: [
-                  "Features",
-                  "Pricing",
-                  "Academia Premium",
-                  "Institutions",
+                  { name: "Features", href: "/features" },
+                  { name: "Pricing", href: "/pricing" },
+                  { name: "Academia Premium", href: "/premium" },
+                  { name: "Institutions", href: "/institutions" },
                 ],
               },
               {
                 title: "Resources",
-                links: ["Blog", "Support", "Documentation", "API"],
+                links: [
+                  { name: "Blog", href: "/blog" },
+                  { name: "Support", href: "/support" },
+                  { name: "Documentation", href: "/docs" },
+                  { name: "API", href: "/api" },
+                ],
               },
               {
                 title: "Company",
-                links: ["About Us", "Careers", "Press", "Contact"],
+                links: [
+                  { name: "About Us", href: "/about" },
+                  { name: "Careers", href: "/careers" },
+                  { name: "Press", href: "/press" },
+                  { name: "Contact", href: "/contact" },
+                ],
               },
             ].map((column) => (
               <div key={column.title}>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
+                <h3 className="font-semibold text-gray-900 dark:text-white  mb-3">
                   {column.title}
                 </h3>
                 <ul className="space-y-2">
                   {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
                         className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                       >
-                        {link}
-                      </a>
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -704,28 +733,35 @@ export default function Landing() {
           <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
               {[
-                { icon: Globe, label: "Language" },
-                { icon: Shield, label: "Privacy" },
-                { icon: FileText, label: "Terms" },
+                { icon: Globe, label: "Language", href: "/language" },
+                { icon: Shield, label: "Privacy", href: "/privacy" },
+                { icon: FileText, label: "Terms", href: "/terms" },
               ].map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href="#"
+                  href={item.href}
                   className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                 >
                   <span className="sr-only">{item.label}</span>
                   <item.icon className="h-6 w-6" />
-                </a>
+                </Link>
               ))}
             </div>
             <div className="flex space-x-6">
-              {["Facebook", "Twitter", "LinkedIn", "GitHub"].map((platform) => (
+              {[
+                { name: "Facebook", href: "https://facebook.com" },
+                { name: "Twitter", href: "https://twitter.com" },
+                { name: "LinkedIn", href: "https://linkedin.com" },
+                { name: "GitHub", href: "https://github.com" },
+              ].map((platform) => (
                 <a
-                  key={platform}
-                  href="#"
+                  key={platform.name}
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                 >
-                  {platform}
+                  {platform.name}
                 </a>
               ))}
             </div>
