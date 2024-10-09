@@ -125,8 +125,8 @@ export default function Landing() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-[#0a1929] dark:to-[#0f2942] transition-colors duration-300">
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-[#0f2942]/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-[#0f2942]/60 transition-colors duration-300">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-300">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 dark:bg-black/80 dark:border-gray-800 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-black/60 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Image
@@ -146,7 +146,7 @@ export default function Landing() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                        className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                       >
                         {item}
                       </Button>
@@ -162,7 +162,7 @@ export default function Landing() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
               >
                 <LogIn className="mr-2 h-4 w-4" />
                 Login
@@ -170,7 +170,7 @@ export default function Landing() {
               <Button
                 variant="default"
                 size="sm"
-                className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
+                className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
               >
                 <UserPlus className="mr-2 h-4 w-4" />
                 Register
@@ -181,7 +181,7 @@ export default function Landing() {
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
-              className="text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+              className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -248,7 +248,7 @@ export default function Landing() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+              className="md:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -274,7 +274,7 @@ export default function Landing() {
                     key={item}
                     variant="ghost"
                     size="sm"
-                    className="text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                    className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                   >
                     {item}
                   </Button>
@@ -282,7 +282,7 @@ export default function Landing() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                  className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                 >
                   <LogIn className="mr-2 h-4 w-4" />
                   Login
@@ -290,7 +290,7 @@ export default function Landing() {
                 <Button
                   variant="default"
                   size="sm"
-                  className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
+                  className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
                 >
                   <UserPlus className="mr-2 h-4 w-4" />
                   Register
@@ -312,10 +312,10 @@ export default function Landing() {
             >
               <div className="flex flex-col justify-center space-y-4">
                 <motion.div variants={fadeInUp} className="space-y-2">
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
                     Unlock 55 Million Research Papers
                   </h1>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-blue-200">
+                  <p className="max-w-[600px] text-gray-600 md:text-xl dark:text-gray-400">
                     Join millions of researchers and academics in accessing a
                     vast library of scholarly work.
                   </p>
@@ -328,13 +328,13 @@ export default function Landing() {
                     <Input
                       type="text"
                       placeholder="Search for papers, people, or research interests"
-                      className="w-full pr-10 bg-white dark:bg-[#1e3a5f] dark:text-white dark:placeholder-blue-200 transition-colors duration-200"
+                      className="w-full pr-10 bg-white dark:bg-gray-900 dark:text-white dark:placeholder-gray-400 transition-colors duration-200"
                     />
-                    <Search className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 dark:text-blue-200" />
+                    <Search className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 dark:text-gray-500" />
                   </div>
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
+                    className="w-full sm:w-auto bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
                   >
                     Search
                   </Button>
@@ -345,14 +345,14 @@ export default function Landing() {
                 >
                   <Button
                     size="lg"
-                    className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
+                    className="bg-gray-900  text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
                   >
                     Sign Up
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="text-blue-600 border-blue-600 hover:bg-blue-100 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                    className="text-gray-900 border-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                   >
                     Learn More
                   </Button>
@@ -362,7 +362,7 @@ export default function Landing() {
                 variants={fadeInUp}
                 className="flex items-center justify-center"
               >
-                <Card className="bg-white dark:bg-[#1e3a5f] transition-colors duration-200">
+                <Card className="bg-white dark:bg-gray-900 transition-colors duration-200">
                   <CardContent className="p-6">
                     {[
                       {
@@ -390,7 +390,7 @@ export default function Landing() {
                           index > 0 ? "mt-4" : ""
                         }`}
                       >
-                        <item.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                        <item.icon className="h-6 w-6 text-gray-900 dark:text-gray-100" />
                         <div className="space-y-1">
                           <p className="text-sm font-medium leading-none">
                             {item.label}
@@ -412,12 +412,12 @@ export default function Landing() {
           initial="initial"
           animate={inView ? "animate" : "initial"}
           variants={staggerChildren}
-          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#0f2942] transition-colors duration-300"
+          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400"
             >
               Join 273 million academics and researchers
             </motion.h2>
@@ -443,18 +443,18 @@ export default function Landing() {
                 },
               ].map((item) => (
                 <motion.div key={item.title} variants={fadeInUp}>
-                  <Card className="bg-white dark:bg-[#1e3a5f] transition-colors duration-200 h-full">
+                  <Card className="bg-white dark:bg-gray-800 transition-colors duration-200 h-full">
                     <CardContent className="p-6 flex flex-col h-full">
-                      <item.icon className="h-12 w-12 mb-4 text-blue-600 dark:text-blue-400" />
+                      <item.icon className="h-12 w-12 mb-4 text-gray-900 dark:text-gray-100" />
                       <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
                         {item.title}
                       </h3>
-                      <p className="text-gray-500 dark:text-blue-200 mb-4 flex-grow">
+                      <p className="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
                         {item.description}
                       </p>
                       <Button
                         variant="link"
-                        className="text-blue-600 dark:text-blue-400 p-0 h-auto font-semibold"
+                        className="text-gray-900 dark:text-gray-100 p-0 h-auto font-semibold"
                       >
                         Learn more
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -466,43 +466,43 @@ export default function Landing() {
             </div>
           </div>
         </motion.section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-[#0a1929] transition-colors duration-300">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-black transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
                 Unlock the most powerful tools with Academia Premium
               </h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-blue-200">
+              <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 Get access to advanced features and tools to supercharge your
                 research and academic career.
               </p>
               <Button
                 size="lg"
-                className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
+                className="bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 transition-colors duration-200"
               >
                 Sign Up and Upgrade to Premium
               </Button>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#0f2942] transition-colors duration-300">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg transform rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-500 to-gray-700 rounded-lg transform rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
                   src="/academialogo.png"
                   width={200}
                   height={200}
                   alt="Academia.edu research tools interface"
-                  className="relative rounded-lg shadow-xl dark:bg-[#1e3a5f] transition-colors duration-200"
+                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
                 />
               </div>
               <div className="flex flex-col justify-center space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
                   Work faster and smarter with advanced research discovery tools
                 </h2>
-                <p className="text-gray-500 dark:text-blue-200">
+                <p className="text-gray-600 dark:text-gray-400">
                   Search the full text and citations of our millions of papers.
                   Download groups of related papers to jumpstart your research.
                   Save time with detailed summaries and search alerts.
@@ -515,9 +515,9 @@ export default function Landing() {
                   ].map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center text-gray-700 dark:text-blue-200"
+                      className="flex items-center text-gray-700 dark:text-gray-300"
                     >
-                      <Shield className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      <Shield className="mr-2 h-4 w-4 text-gray-900 dark:text-gray-100" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -526,14 +526,14 @@ export default function Landing() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-[#0a1929] transition-colors duration-300">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-black transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
                   Share your work, track your impact, and grow your audience
                 </h2>
-                <p className="text-gray-500 dark:text-blue-200">
+                <p className="text-gray-600 dark:text-gray-400">
                   Get notified when other academics mention you or cite your
                   papers. Track your impact with in-depth analytics and network
                   with members of your field.
@@ -546,30 +546,30 @@ export default function Landing() {
                   ].map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center text-gray-700 dark:text-blue-200"
+                      className="flex items-center text-gray-700 dark:text-gray-300"
                     >
-                      <Shield className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      <Shield className="mr-2 h-4 w-4 text-gray-900 dark:text-gray-100" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="relative order-1 lg:order-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg transform -rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg transform -rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
                   src="/academialogo.png"
                   width={200}
                   height={200}
                   alt="Academia.edu analytics and publishing interface"
-                  className="relative rounded-lg shadow-xl dark:bg-[#1e3a5f] transition-colors duration-200"
+                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
                 />
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#0f2942] transition-colors duration-300">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
               Explore our top research interests
             </h2>
             <div className="mt-8">
@@ -579,7 +579,7 @@ export default function Landing() {
                     <TabsTrigger
                       key={category.name}
                       value={category.name}
-                      className="flex-1 text-gray-700 dark:text-blue-200 data-[state=active]:bg-blue-600 data-[state=active]:text-white dark:data-[state=active]:bg-blue-500"
+                      className="flex-1 text-gray-700 dark:text-gray-300 data-[state=active]:bg-gray-900 data-[state=active]:text-white dark:data-[state=active]:bg-gray-100 dark:data-[state=active]:text-gray-900"
                     >
                       {category.name}
                     </TabsTrigger>
@@ -587,14 +587,14 @@ export default function Landing() {
                 </TabsList>
                 {categories.map((category) => (
                   <TabsContent key={category.name} value={category.name}>
-                    <Card className="bg-white dark:bg-[#1e3a5f] transition-colors duration-200">
+                    <Card className="bg-white dark:bg-gray-800 transition-colors duration-200">
                       <CardContent className="p-6">
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                           <div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                               {category.name}
                             </h3>
-                            <p className="text-sm text-gray-500 dark:text-blue-200">
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
                               {category.followers} Followers • {category.papers}{" "}
                               Papers • {category.authors} Authors
                             </p>
@@ -607,7 +607,7 @@ export default function Landing() {
                                 width={20}
                                 height={20}
                                 alt={`User ${i + 1}`}
-                                className="rounded-full border-2 border-white dark:border-[#1e3a5f]"
+                                className="rounded-full border-2 border-white dark:border-gray-800"
                               />
                             ))}
                           </div>
@@ -619,10 +619,10 @@ export default function Landing() {
                                 key={subcategory.name}
                                 className="flex justify-between items-center"
                               >
-                                <span className="text-gray-700 dark:text-blue-200">
+                                <span className="text-gray-700 dark:text-gray-300">
                                   {subcategory.name}
                                 </span>
-                                <span className="text-sm text-gray-500 dark:text-blue-300">
+                                <span className="text-sm text-gray-500 dark:text-gray-400">
                                   {subcategory.papers} papers
                                 </span>
                               </div>
@@ -638,7 +638,7 @@ export default function Landing() {
             <div className="mt-8 text-center">
               <Button
                 variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-100 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-[#1e3a5f] transition-colors duration-200"
+                className="text-gray-900 border-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:border-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
               >
                 Show more
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -648,7 +648,7 @@ export default function Landing() {
           <RealStoriesSection />
         </section>
       </main>
-      <footer className="border-t bg-white dark:bg-[#0f2942] dark:border-[#1e3a5f] transition-colors duration-300">
+      <footer className="border-t bg-white dark:bg-black dark:border-gray-800 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
@@ -659,7 +659,7 @@ export default function Landing() {
                 height={40}
                 className="dark:invert mb-4"
               />
-              <p className="text-sm text-gray-600 dark:text-blue-200">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 © 2024 Academia.edu. All rights reserved.
               </p>
             </div>
@@ -691,7 +691,7 @@ export default function Landing() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-gray-600 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                       >
                         {link}
                       </a>
@@ -701,7 +701,7 @@ export default function Landing() {
               </div>
             ))}
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-[#1e3a5f] flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
               {[
                 { icon: Globe, label: "Language" },
@@ -711,7 +711,7 @@ export default function Landing() {
                 <a
                   key={item.label}
                   href="#"
-                  className="text-gray-600 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                 >
                   <span className="sr-only">{item.label}</span>
                   <item.icon className="h-6 w-6" />
@@ -723,7 +723,7 @@ export default function Landing() {
                 <a
                   key={platform}
                   href="#"
-                  className="text-gray-600 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
                 >
                   {platform}
                 </a>
