@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 import {
@@ -52,7 +53,6 @@ import {
   FileText,
   Users,
 } from "lucide-react";
-import Image from "next/image";
 
 ChartJS.register(
   CategoryScale,
@@ -199,7 +199,7 @@ const countryData = {
   ],
 };
 
-export default function Analytics() {
+export default function EnhancedAnalyticsDashboard() {
   const [timeRange, setTimeRange] = useState("30");
 
   return (
@@ -210,11 +210,11 @@ export default function Analytics() {
             <div className="flex items-center">
               <a href="/" className="flex-shrink-0">
                 <Image
-                  className="h-8 w-auto"
                   src="/academialogo.png"
                   alt="Academia Logo"
-                  height={32}
-                  width={120}
+                  width={150}
+                  height={40}
+                  className="h-8 w-auto"
                 />
               </a>
               <div className="hidden md:block">
@@ -482,8 +482,10 @@ export default function Analytics() {
             <Card>
               <CardContent className="pt-6">
                 <Image
-                  src="/placeholder.svg?height=100&width=100"
+                  src="/placeholder.svg"
                   alt="No visitors"
+                  width={100}
+                  height={100}
                   className="mx-auto mb-4"
                 />
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
