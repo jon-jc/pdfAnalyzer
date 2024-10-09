@@ -71,9 +71,9 @@ export default function RealStoriesSection() {
   }, [isAutoPlaying]);
 
   return (
-    <section className="w-full py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-[#0a1929] dark:via-[#0f2942] dark:to-[#1a1f3d]">
+    <section className="w-full py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-black dark:to-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-gray-100">
           Real stories from real people
         </h2>
         <div className="relative">
@@ -100,17 +100,17 @@ export default function RealStoriesSection() {
                     <p className="text-2xl font-bold">
                       {testimonials[currentIndex].name}
                     </p>
-                    <p className="text-lg text-blue-300">
+                    <p className="text-lg text-gray-300">
                       {testimonials[currentIndex].role}
                     </p>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-400">
                       {testimonials[currentIndex].affiliation}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 bg-white/90 dark:bg-[#1e3a5f]/90 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-xl relative">
-                <Quote className="absolute top-4 left-4 h-12 w-12 text-blue-200 dark:text-blue-800 opacity-50" />
+              <div className="w-full lg:w-1/2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-xl relative">
+                <Quote className="absolute top-4 left-4 h-12 w-12 text-gray-200 dark:text-gray-700 opacity-50" />
                 <blockquote className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-700 dark:text-gray-200 mb-8 leading-relaxed relative z-10">
                   {testimonials[currentIndex].quote}
                 </blockquote>
@@ -121,13 +121,13 @@ export default function RealStoriesSection() {
                       alt={testimonials[currentIndex].name}
                       width={64}
                       height={64}
-                      className="rounded-full border-4 border-blue-500 dark:border-blue-400"
+                      className="rounded-full border-4 border-gray-500 dark:border-gray-400"
                     />
                     <div className="ml-4">
                       <p className="text-xl font-semibold text-gray-900 dark:text-white">
                         {testimonials[currentIndex].name}
                       </p>
-                      <p className="text-sm text-blue-600 dark:text-blue-400">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         {testimonials[currentIndex].role}
                       </p>
                     </div>
@@ -136,7 +136,7 @@ export default function RealStoriesSection() {
                     variant="outline"
                     size="sm"
                     onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                    className="text-blue-600 border-blue-600 hover:bg-blue-100 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-900/30"
+                    className="text-gray-600 border-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-700"
                   >
                     {isAutoPlaying ? "Pause" : "Play"}
                   </Button>
@@ -148,7 +148,7 @@ export default function RealStoriesSection() {
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full bg-white/50 dark:bg-[#1e3a5f]/50 shadow-lg backdrop-blur-sm border-0 hover:bg-white/80 dark:hover:bg-[#1e3a5f]/80 transition-all duration-200"
+              className="rounded-full bg-white/50 dark:bg-gray-800/50 shadow-lg backdrop-blur-sm border-0 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-200"
               onClick={prevTestimonial}
             >
               <ChevronLeft className="h-6 w-6" />
@@ -157,7 +157,7 @@ export default function RealStoriesSection() {
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full bg-white/50 dark:bg-[#1e3a5f]/50 shadow-lg backdrop-blur-sm border-0 hover:bg-white/80 dark:hover:bg-[#1e3a5f]/80 transition-all duration-200"
+              className="rounded-full bg-white/50 dark:bg-gray-800/50 shadow-lg backdrop-blur-sm border-0 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-200"
               onClick={nextTestimonial}
             >
               <ChevronRight className="h-6 w-6" />
@@ -173,7 +173,7 @@ export default function RealStoriesSection() {
               size="sm"
               className={`mx-1 w-3 h-3 rounded-full p-0 transition-all duration-200 ${
                 index === currentIndex
-                  ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 scale-125"
+                  ? "bg-gray-600 hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-gray-300 scale-125"
                   : "bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500"
               }`}
               onClick={() => setCurrentIndex(index)}
