@@ -44,6 +44,7 @@ import {
   ArrowRight,
   Globe,
 } from "lucide-react";
+import RealStoriesSection from "./stories";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -644,6 +645,7 @@ export default function Landing() {
               </Button>
             </div>
           </div>
+          <RealStoriesSection />
         </section>
       </main>
       <footer className="border-t bg-white dark:bg-[#0f2942] dark:border-[#1e3a5f] transition-colors duration-300">
