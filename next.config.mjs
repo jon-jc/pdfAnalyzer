@@ -22,10 +22,6 @@ const nextConfig = {
     config.externals = [...(config.externals || []), "canvas", "jsdom"];
     return config;
   },
-  api: {
-    bodyParser: false,
-    responseLimit: false,
-  },
   experimental: {
     serverComponentsExternalPackages: ["pdf-parse"],
   },

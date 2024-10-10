@@ -140,6 +140,7 @@ export default function Landing() {
           <div className="flex items-center space-x-4">
             <nav className="hidden md:flex items-center space-x-4">
               {[
+                { name: "PDF Analyzer(LLM)", href: "/pdf" },
                 { name: "Research", href: "/research" },
                 { name: "Pricing", href: "/pricing" },
               ].map((item) => (

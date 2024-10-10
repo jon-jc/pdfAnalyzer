@@ -4,13 +4,6 @@ import pdf from "pdf-parse";
 import { createHash } from "crypto";
 import { LRUCache } from "lru-cache";
 
-export const config = {
-  api: {
-    bodyParser: false,
-    responseLimit: false,
-  },
-};
-
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 interface AnalysisResult {
@@ -143,11 +136,12 @@ export async function POST(req: NextRequest) {
     const { text, pageCount } = await extractTextFromPDF(buffer);
     const wordCount = text.split(/\s+/).length;
 
-    const [abstract, topic, questions] = await Promise.all([
+    const [abstract, topic] = await Promise.all([
       generateAbstract(text),
       classifyTopic(text),
-      generateImpressiveQuestions(text, "", ""), // Pass empty strings for now, will be updated later
     ]);
+
+    const questions = await generateImpressiveQuestions(text, abstract, topic);
 
     const result: AnalysisResult = {
       abstract,
