@@ -157,7 +157,7 @@ export default function PDFAnalyzer() {
         )
       );
 
-      const response = await fetch("/api/analyze-pdf", {
+      const response = await fetch("/api/pdf", {
         method: "POST",
         body: formData,
       });

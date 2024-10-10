@@ -20,14 +20,14 @@ const analysisCache = new LRUCache<string, AnalysisResult>({
   ttl: 1000 * 60 * 60 * 24, // Cache for 24 hours
 });
 
-const extractTextFromPDF = async (
+async function extractTextFromPDF(
   buffer: ArrayBuffer
-): Promise<{ text: string; pageCount: number }> => {
+): Promise<{ text: string; pageCount: number }> {
   const data = await pdf(Buffer.from(buffer));
   return { text: data.text, pageCount: data.numpages };
-};
+}
 
-const generateAbstract = async (text: string): Promise<string> => {
+async function generateAbstract(text: string): Promise<string> {
   const prompt = `Generate a concise abstract for the following academic paper:\n\n${text.slice(
     0,
     4000
@@ -46,9 +46,9 @@ const generateAbstract = async (text: string): Promise<string> => {
     max_tokens: 300,
   });
   return response.choices[0].message.content || "";
-};
+}
 
-const classifyTopic = async (text: string): Promise<string> => {
+async function classifyTopic(text: string): Promise<string> {
   const prompt = `Identify the main topic or topics of this academic paper:\n\n${text.slice(
     0,
     4000
@@ -67,13 +67,13 @@ const classifyTopic = async (text: string): Promise<string> => {
     max_tokens: 100,
   });
   return response.choices[0].message.content || "";
-};
+}
 
-const generateImpressiveQuestions = async (
+async function generateImpressiveQuestions(
   text: string,
   abstract: string,
   topic: string
-): Promise<string> => {
+): Promise<string> {
   const prompt = `Based on this academic paper, generate 5 insightful and impressive questions that would demonstrate the value of this AI-powered analysis tool. Consider the following aspects:
 
 1. The paper's abstract: ${abstract}
@@ -109,11 +109,11 @@ Generate the questions in a numbered list format.`;
     max_tokens: 500,
   });
   return response.choices[0].message.content || "";
-};
+}
 
-const getFileHash = (buffer: ArrayBuffer): string => {
+function getFileHash(buffer: ArrayBuffer): string {
   return createHash("md5").update(Buffer.from(buffer)).digest("hex");
-};
+}
 
 export async function POST(req: NextRequest) {
   try {
