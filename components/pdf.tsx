@@ -23,6 +23,7 @@ import {
   Sparkles,
   CheckCircle,
   AlertCircle,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -41,14 +42,24 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface AnalysisResult {
   id: string;
   fileName: string;
   status: "queued" | "analyzing" | "completed" | "error";
   abstract?: string;
-  topic?: string;
-  questions?: string;
+  topics?: string[];
+  questions?: string[];
+  keyFindings?: string[];
+  researchGaps?: string[];
+  futureDirections?: string[];
+  methodologyCritique?: string;
+  impactAnalysis?: string;
+  wordCount?: number;
+  pageCount?: number;
+  citationCount?: number;
   error?: string;
 }
 
@@ -174,6 +185,12 @@ export default function PDFAnalyzer() {
             : result
         )
       );
+
+      addNotification({
+        title: "Analysis Complete",
+        description: `Successfully analyzed ${file.name}.`,
+        type: "success",
+      });
     } catch (error) {
       console.error("Error:", error);
       setResults((prevResults) =>
@@ -184,7 +201,7 @@ export default function PDFAnalyzer() {
         )
       );
       addNotification({
-        title: "Analysis failed",
+        title: "Analysis Failed",
         description: `There was an error analyzing ${file.name}. Please try again.`,
         type: "error",
       });
@@ -206,6 +223,125 @@ export default function PDFAnalyzer() {
       await analyzeFile(files[i], i);
     }
   };
+
+  const renderContent = (result: AnalysisResult) => (
+    <Tabs defaultValue="abstract" className="w-full">
+      <TabsList className="grid w-full grid-cols-3 lg:grid-cols-5">
+        <TabsTrigger value="abstract">Abstract</TabsTrigger>
+        <TabsTrigger value="topics">Topics</TabsTrigger>
+        <TabsTrigger value="keyFindings">Key Findings</TabsTrigger>
+        <TabsTrigger value="questions">Questions</TabsTrigger>
+        <TabsTrigger value="more">More</TabsTrigger>
+      </TabsList>
+      <TabsContent value="abstract">
+        <Card>
+          <CardHeader>
+            <CardTitle>Abstract</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="whitespace-pre-wrap">{result.abstract}</p>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="topics">
+        <Card>
+          <CardHeader>
+            <CardTitle>Main Topics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {result.topics && result.topics.length > 0 ? (
+                result.topics.map((topic, index) => (
+                  <Badge key={index} variant="secondary">
+                    {topic}
+                  </Badge>
+                ))
+              ) : (
+                <p>No topics available for this paper.</p>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="keyFindings">
+        <Card>
+          <CardHeader>
+            <CardTitle>Key Findings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2">
+              {result.keyFindings?.map((finding, index) => (
+                <li key={index} className="text-base leading-relaxed">
+                  {finding.split(":")[0]}
+                  <span className="font-normal">: {finding.split(":")[1]}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="questions">
+        <Card>
+          <CardHeader>
+            <CardTitle>Insightful Questions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ol className="list-decimal list-inside space-y-2">
+              {result.questions?.map((question, index) => (
+                <li key={index} className="text-base leading-relaxed">
+                  {question}
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="more">
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="researchGaps">
+            <AccordionTrigger>Research Gaps</AccordionTrigger>
+            <AccordionContent>
+              <ul className="list-disc list-inside space-y-2">
+                {result.researchGaps?.map((gap, index) => (
+                  <li key={index} className="text-base leading-relaxed">
+                    {gap}
+                  </li>
+                ))}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="futureDirections">
+            <AccordionTrigger>Future Directions</AccordionTrigger>
+            <AccordionContent>
+              <ul className="list-disc list-inside space-y-2">
+                {result.futureDirections?.map((direction, index) => (
+                  <li key={index} className="text-base leading-relaxed">
+                    {direction}
+                  </li>
+                ))}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="methodologyCritique">
+            <AccordionTrigger>Methodology Critique</AccordionTrigger>
+            <AccordionContent>
+              <p className="text-base leading-relaxed whitespace-pre-wrap">
+                {result.methodologyCritique}
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="impactAnalysis">
+            <AccordionTrigger>Impact Analysis</AccordionTrigger>
+            <AccordionContent>
+              <p className="text-base leading-relaxed whitespace-pre-wrap">
+                {result.impactAnalysis}
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </TabsContent>
+    </Tabs>
+  );
 
   if (!mounted) {
     return null;
@@ -262,13 +398,13 @@ export default function PDFAnalyzer() {
                 }
               }}
             >
-              Upload Paper or multiple Papers
+              Upload Papers
             </Button>
           </div>
         </div>
       </motion.header>
 
-      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="flex-grow container mx-auto px-4 sm:px-6  lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-8">
           <motion.div
             initial="initial"
@@ -373,7 +509,7 @@ export default function PDFAnalyzer() {
                   Analysis Results
                 </CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">
-                  View insights from your uploaded Papers
+                  View comprehensive insights from your uploaded Papers
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
@@ -394,10 +530,25 @@ export default function PDFAnalyzer() {
                               <FileText className="mr-2 h-5 w-5" />
                               {result.fileName}
                             </CardTitle>
-                            <CardDescription className="text-gray-600 dark:text-gray-300">
-                              Status:{" "}
-                              {result.status.charAt(0).toUpperCase() +
-                                result.status.slice(1)}
+                            <CardDescription className="text-gray-600 dark:text-gray-300 flex items-center justify-between">
+                              <span>
+                                Status:{" "}
+                                {result.status.charAt(0).toUpperCase() +
+                                  result.status.slice(1)}
+                              </span>
+                              {result.status === "completed" && (
+                                <div className="flex space-x-2">
+                                  <Badge variant="secondary">
+                                    {result.pageCount} pages
+                                  </Badge>
+                                  <Badge variant="secondary">
+                                    {result.wordCount} words
+                                  </Badge>
+                                  <Badge variant="secondary">
+                                    {result.citationCount} citations
+                                  </Badge>
+                                </div>
+                              )}
                             </CardDescription>
                           </CardHeader>
                           <CardContent className="p-4">
@@ -419,44 +570,8 @@ export default function PDFAnalyzer() {
                                 </div>
                               </div>
                             )}
-                            {result.status === "completed" && (
-                              <Accordion
-                                type="single"
-                                collapsible
-                                className="w-full"
-                              >
-                                <AccordionItem value="abstract">
-                                  <AccordionTrigger>Abstract</AccordionTrigger>
-                                  <AccordionContent>
-                                    {result.abstract}
-                                  </AccordionContent>
-                                </AccordionItem>
-                                <AccordionItem value="topic">
-                                  <AccordionTrigger>
-                                    Main Topic(s)
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    {result.topic}
-                                  </AccordionContent>
-                                </AccordionItem>
-                                <AccordionItem value="questions">
-                                  <AccordionTrigger>
-                                    Insightful Questions
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    <div
-                                      dangerouslySetInnerHTML={{
-                                        __html:
-                                          result.questions?.replace(
-                                            /\n/g,
-                                            "<br>"
-                                          ) || "",
-                                      }}
-                                    />
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            )}
+                            {result.status === "completed" &&
+                              renderContent(result)}
                             {result.status === "error" && (
                               <div className="text-sm text-red-500 flex items-center">
                                 <X className="mr-2 h-4 w-4" />
@@ -507,9 +622,9 @@ export default function PDFAnalyzer() {
               },
               {
                 icon: Sparkles,
-                title: "Insights Delivered",
+                title: "Comprehensive Insights",
                 description:
-                  "Receive comprehensive analysis including abstract, topics, and key questions.",
+                  "Receive in-depth analysis including abstract, topics, key findings, and more.",
               },
             ].map((feature, index) => (
               <Card
@@ -534,7 +649,7 @@ export default function PDFAnalyzer() {
       <footer className="border-t bg-white dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300 mt-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-            Made by Jonathan Cho as a demo for Academia.edu
+            © 2023 Academia.edu. All rights reserved.
           </p>
         </div>
       </footer>
