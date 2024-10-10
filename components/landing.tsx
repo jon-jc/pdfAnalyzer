@@ -140,7 +140,7 @@ export default function Landing() {
           <div className="flex items-center space-x-4">
             <nav className="hidden md:flex items-center space-x-4">
               {[
-                { name: "PDF Analyzer(LLM)", href: "/pdf" },
+                { name: "Paper Analyzer(LLM)", href: "/pdf" },
                 { name: "Research", href: "/research" },
                 { name: "Pricing", href: "/pricing" },
               ].map((item) => (
@@ -280,9 +280,9 @@ export default function Landing() {
             >
               <nav className="flex flex-col space-y-2 p-4">
                 {[
-                  { name: "About", href: "/about" },
+                  { name: "Paper Analyzer(LLM)", href: "/pdf" },
                   { name: "Research", href: "/research" },
-                  { name: "Pricing", href: "/pricingAttachment" },
+                  { name: "Pricing", href: "/pricing" },
                 ].map((item) => (
                   <Link key={item.name} href={item.href}>
                     <Button
