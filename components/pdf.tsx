@@ -227,7 +227,7 @@ export default function PDFAnalyzer() {
               className="dark:invert transition-all duration-300 hover:opacity-80"
             />
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
-              PDF Analyzer
+              Paper Analyzer
             </h1>
           </div>
           <div className="flex items-center space-x-4">
@@ -262,7 +262,7 @@ export default function PDFAnalyzer() {
                 }
               }}
             >
-              Upload PDF
+              Upload Paper or multiple Papers
             </Button>
           </div>
         </div>
@@ -282,8 +282,8 @@ export default function PDFAnalyzer() {
                   Analyze Your Academic Papers
                 </CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">
-                  Upload your PDFs and our AI will provide comprehensive
-                  insights
+                  Upload your Research Papers and our AI will provide
+                  comprehensive insights
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
@@ -373,7 +373,7 @@ export default function PDFAnalyzer() {
                   Analysis Results
                 </CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">
-                  View insights from your uploaded PDFs
+                  View insights from your uploaded Papers
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
@@ -495,7 +495,7 @@ export default function PDFAnalyzer() {
             {[
               {
                 icon: Book,
-                title: "Upload PDF",
+                title: "Upload Papers",
                 description:
                   "Simply drag and drop or select your PDF files to get started.",
               },
@@ -534,7 +534,7 @@ export default function PDFAnalyzer() {
       <footer className="border-t bg-white dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300 mt-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-            © 2024 Academia.edu PDF Analyzer. All rights reserved.
+            Made by Jonathan Cho as a demo for Academia.edu
           </p>
         </div>
       </footer>
