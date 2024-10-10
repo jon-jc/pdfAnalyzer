@@ -18,7 +18,6 @@ import {
   Download,
   Sun,
   Moon,
-  ChevronDown,
   Book,
   Brain,
   Sparkles,
