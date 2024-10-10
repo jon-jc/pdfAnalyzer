@@ -52,7 +52,7 @@ ${text.slice(0, 5000)}`;
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -82,7 +82,7 @@ ${text.slice(0, 5000)}`;
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -155,7 +155,7 @@ Present your questions in a numbered format, ensuring each is concise yet intell
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -201,7 +201,7 @@ Present your analysis as a numbered list of key findings, ensuring each point is
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -243,7 +243,7 @@ Present your analysis as a numbered list of research gaps, each with a brief exp
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -286,7 +286,7 @@ Present your suggestions as a numbered list, each with a concise description of 
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -367,7 +367,7 @@ Provide a concise yet comprehensive analysis of the research's potential short-t
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
