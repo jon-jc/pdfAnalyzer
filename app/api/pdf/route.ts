@@ -52,7 +52,7 @@ ${text.slice(0, 5000)}`;
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -77,17 +77,19 @@ async function classifyTopics(text: string): Promise<string[]> {
 Example format: 
 Quantum Computing Algorithms, Neuroplasticity Mechanisms, Sustainable Urban Development
 
+Ensure that each tag is unique and captures a distinct aspect of the research. If you cannot generate 6 unique tags, provide as many as you can without repetition.
+
 Paper excerpt:
 ${text.slice(0, 5000)}`;
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
           content:
-            "You are an AI with exceptional skill in identifying and categorizing complex academic research topics.",
+            "You are an AI with exceptional skill in identifying and categorizing complex academic research topics. Your task is to generate precise, unique tags that accurately represent the core themes of the research.",
         },
         { role: "user", content: prompt },
       ],
@@ -116,11 +118,18 @@ function formatTags(rawTopics: string): string[] {
     })
     .filter((tag) => tag.split(" ").length >= 2 && tag.split(" ").length <= 4);
 
-  while (tags.length < 6) {
-    tags.push(`Advanced Research Area ${tags.length + 1}`);
+  // Remove duplicate tags
+  const uniqueTags = Array.from(new Set(tags));
+
+  // If we have less than 6 unique tags, add generic ones to reach the minimum
+  while (uniqueTags.length < 6) {
+    const genericTag = `Research Area ${uniqueTags.length + 1}`;
+    if (!uniqueTags.includes(genericTag)) {
+      uniqueTags.push(genericTag);
+    }
   }
 
-  return tags.slice(0, 8);
+  return uniqueTags.slice(0, 8);
 }
 
 async function generateImpressiveQuestions(
@@ -155,7 +164,7 @@ Present your questions in a numbered format, ensuring each is concise yet intell
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -201,7 +210,7 @@ Present your analysis as a numbered list of key findings, ensuring each point is
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -243,7 +252,7 @@ Present your analysis as a numbered list of research gaps, each with a brief exp
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -286,7 +295,7 @@ Present your suggestions as a numbered list, each with a concise description of 
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -326,7 +335,7 @@ Provide a concise yet comprehensive critique, highlighting both commendable aspe
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -367,7 +376,7 @@ Provide a concise yet comprehensive analysis of the research's potential short-t
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -419,6 +428,7 @@ export async function POST(req: NextRequest) {
 
     const [abstract, topics] = await Promise.all([
       generateAbstract(text),
+
       classifyTopics(text),
     ]);
 

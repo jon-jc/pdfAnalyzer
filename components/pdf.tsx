@@ -23,7 +23,6 @@ import {
   Sparkles,
   CheckCircle,
   AlertCircle,
-  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,6 +118,7 @@ export default function PDFAnalyzer() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
   const { scrollYProgress } = useScroll();
   const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
@@ -249,17 +249,38 @@ export default function PDFAnalyzer() {
             <CardTitle>Main Topics</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2">
-              {result.topics && result.topics.length > 0 ? (
-                result.topics.map((topic, index) => (
-                  <Badge key={index} variant="secondary">
-                    {topic}
-                  </Badge>
-                ))
-              ) : (
-                <p>No topics available for this paper.</p>
-              )}
-            </div>
+            {Array.isArray(result.topics) && result.topics.length > 0 ? (
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {result.topics.map((topic, index) => (
+                    <Badge
+                      key={index}
+                      variant={
+                        selectedTopic === topic ? "default" : "secondary"
+                      }
+                      className="text-sm py-1 px-2 cursor-pointer"
+                      onClick={() => setSelectedTopic(topic)}
+                    >
+                      {topic}
+                    </Badge>
+                  ))}
+                </div>
+                {selectedTopic && (
+                  <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <h4 className="font-semibold mb-2">
+                      Selected Topic: {selectedTopic}
+                    </h4>
+                    <p className="text-sm">
+                      This topic is one of the main themes identified in the
+                      paper. It represents a key area of focus or a significant
+                      concept discussed in the research.
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p>No topics available for this paper.</p>
+            )}
           </CardContent>
         </Card>
       </TabsContent>
@@ -272,30 +293,14 @@ export default function PDFAnalyzer() {
             <ul className="list-disc list-inside space-y-2">
               {result.keyFindings?.map((finding, index) => (
                 <li key={index} className="text-base leading-relaxed">
-                  {finding.split(":")[0]}
-                  <span className="font-normal">: {finding.split(":")[1]}</span>
+                  {finding}
                 </li>
               ))}
             </ul>
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="questions">
-        <Card>
-          <CardHeader>
-            <CardTitle>Insightful Questions</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ol className="list-decimal list-inside space-y-2">
-              {result.questions?.map((question, index) => (
-                <li key={index} className="text-base leading-relaxed">
-                  {question}
-                </li>
-              ))}
-            </ol>
-          </CardContent>
-        </Card>
-      </TabsContent>
+
       <TabsContent value="more">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="researchGaps">
@@ -383,7 +388,7 @@ export default function PDFAnalyzer() {
                   transition={{ duration: 0.2 }}
                 >
                   {theme === "dark" ? (
-                    <Sun className="h-5 w-5" />
+                    <Sun className="h-5  w-5" />
                   ) : (
                     <Moon className="h-5 w-5" />
                   )}
@@ -404,7 +409,7 @@ export default function PDFAnalyzer() {
         </div>
       </motion.header>
 
-      <main className="flex-grow container mx-auto px-4 sm:px-6  lg:px-8 py-12">
+      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-8">
           <motion.div
             initial="initial"
@@ -645,14 +650,6 @@ export default function PDFAnalyzer() {
           </div>
         </motion.section>
       </main>
-
-      <footer className="border-t bg-white dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300 mt-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-            © 2023 Academia.edu. All rights reserved.
-          </p>
-        </div>
-      </footer>
 
       <AnimatePresence>
         {notifications.map((notification) => (
