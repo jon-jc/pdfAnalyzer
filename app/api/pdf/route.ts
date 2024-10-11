@@ -5,7 +5,9 @@ import { createHash } from "crypto";
 import { LRUCache } from "lru-cache";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-export const maxDuration = 300;
+export const config = {
+  maxDuration: 300,
+};
 
 interface AnalysisResult {
   abstract: string;
