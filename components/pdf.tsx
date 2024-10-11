@@ -43,6 +43,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 interface AnalysisResult {
   id: string;
@@ -359,13 +360,15 @@ export default function PDFAnalyzer() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Image
-              src="/academialogo.png"
-              alt="Academia.edu Logo"
-              width={150}
-              height={40}
-              className="dark:invert transition-all duration-300 hover:opacity-80"
-            />
+            <Link href="/">
+              <Image
+                src="/academialogo.png"
+                alt="Academia.edu Logo"
+                width={150}
+                height={40}
+                className="dark:invert transition-all duration-300 hover:opacity-80"
+              />
+            </Link>
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
               Paper Analyzer
             </h1>
