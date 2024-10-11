@@ -444,7 +444,6 @@ export async function POST(req: NextRequest) {
         critiqueMethods(text, abstract),
         analyzeImpact(text, abstract, topics),
       ]);
-
     const result: AnalysisResult = {
       abstract,
       topics,
