@@ -679,7 +679,7 @@ export default function Landing() {
                 className="dark:invert mb-4"
               />
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                © 2024 Academia.edu. All rights reserved.
+                © THIS IS FOR DEMONSTRATION PURPOSES ONLY.
               </p>
             </div>
             {[
@@ -688,8 +688,8 @@ export default function Landing() {
                 links: [
                   { name: "Features", href: "/features" },
                   { name: "Pricing", href: "/pricing" },
-                  { name: "Academia Premium", href: "/premium" },
-                  { name: "Institutions", href: "/institutions" },
+                  { name: "Academia Premium", href: "/pricing" },
+                  { name: "Institutions", href: "/" },
                 ],
               },
               {
@@ -697,17 +697,17 @@ export default function Landing() {
                 links: [
                   { name: "Blog", href: "/blog" },
                   { name: "Support", href: "/support" },
-                  { name: "Documentation", href: "/docs" },
-                  { name: "API", href: "/api" },
+                  { name: "Documentation", href: "/" },
+                  { name: "API", href: "/" },
                 ],
               },
               {
                 title: "Company",
                 links: [
-                  { name: "About Us", href: "/about" },
-                  { name: "Careers", href: "/careers" },
-                  { name: "Press", href: "/press" },
-                  { name: "Contact", href: "/contact" },
+                  { name: "About Us", href: "/" },
+                  { name: "Careers", href: "/" },
+                  { name: "Press", href: "/" },
+                  { name: "Contact", href: "/" },
                 ],
               },
             ].map((column) => (
