@@ -99,14 +99,14 @@ const testimonials = [
   },
   {
     quote:
-      "I know more about who is using my ideas now than I ever have before, thanks to Mentions and Readers on Academia.",
+      "I know more about who is using my ideas now than I ever have before, thanks to Mentions and Readers on.",
     author: "Dennis Klass",
     title: "Webster University, Religious Studies, Emeritus",
     image: "/placeholder.svg?height=80&width=80",
   },
   {
     quote:
-      "I was thrilled to discover through Academia's Premium features my work is being utilized by scholars in a half dozen some countries.",
+      "I was thrilled to discover through's Premium features my work is being utilized by scholars in a half dozen some countries.",
     author: "Orsat Ligorio",
     title: "University of Belgrade, Faculty of Philosophy, Classics",
     image: "/placeholder.svg?height=80&width=80",
@@ -139,8 +139,8 @@ export default function Pricing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/academialogo.png"
-              alt="Academia.edu Logo"
+              src="/"
+              alt="Logo"
               width={150}
               height={40}
               className="dark:invert transition-all duration-300 hover:opacity-80"
@@ -333,7 +333,7 @@ export default function Pricing() {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-gray-100">
-              Academia Premium
+              Premium
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-400">
               The platform for research-driven people.
@@ -536,13 +536,7 @@ export default function Pricing() {
             <h2 className="text-3xl font-bold mb-6">
               Help us expand the impact of research
             </h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-400">
-              Academias mission is to make every scholarly and scientific paper
-              available for free on the internet and to enhance academic
-              discussion and collaboration. Support our mission by becoming a
-              Premium member, and gain access to Academia Premiums tools to
-              advance your career and research.
-            </p>
+            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-400"></p>
             <Button
               size="lg"
               className="bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
@@ -557,7 +551,7 @@ export default function Pricing() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-semibold mb-4">Academia</h3>
+              <h3 className="font-semibold mb-4"></h3>
               <ul className="space-y-2">
                 <li>
                   <a
@@ -674,7 +668,7 @@ export default function Pricing() {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} Academia. All rights reserved.
+            © {new Date().getFullYear()} This is just for educational purposes
           </div>
         </div>
       </footer>
