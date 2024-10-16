@@ -90,14 +90,6 @@ A comprehensive application that combines a research paper PDF analyzer with a m
 
    Feel free to customize components and styles to fit your needs.
 
-## Project Structure
-
-- **components/**: Reusable React components.
-- **pages/**: Next.js pages for routing.
-- **public/**: Static assets like images and icons.
-- **styles/**: Global and component-specific styles using Tailwind CSS.
-- **utils/**: Utility functions and helper modules.
-- **types/**: TypeScript interfaces and types.
 
 ## Technologies Used
 
