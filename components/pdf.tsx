@@ -362,8 +362,8 @@ export default function PDFAnalyzer() {
           <div className="flex items-center space-x-4">
             <Link href="/">
               <Image
-                src="/academialogo.png"
-                alt="Academia.edu Logo"
+                src="/"
+                alt="Logo"
                 width={150}
                 height={40}
                 className="dark:invert transition-all duration-300 hover:opacity-80"

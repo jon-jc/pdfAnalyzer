@@ -29,7 +29,7 @@ const testimonials = [
     affiliation: "Independent Researcher",
     image: "/avatar2.png",
     quote:
-      "The value of Bulk Download is in providing a fairly comprehensive overview of almost any topic within Academia.",
+      "The value of Bulk Download is in providing a fairly comprehensive overview of almost any topic within a few minutes. It is a great way to get a sense of the literature on a topic and to identify key papers.",
   },
   {
     name: "Paul",

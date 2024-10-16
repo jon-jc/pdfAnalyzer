@@ -130,8 +130,8 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/academialogo.png"
-              alt="Academia.edu Logo"
+              src="/"
+              alt="Logo"
               width={150}
               height={40}
               className="dark:invert transition-all duration-300 hover:opacity-80"
@@ -458,7 +458,7 @@ export default function Landing() {
                   icon: FileText,
                   title: "Publish your work",
                   description:
-                    "Publish your research with fast and rigorous service through Academia.edu journals. Get instant worldwide dissemination of your work.",
+                    "Publish your research with fast and rigorous service through journals. Get instant worldwide dissemination of your work.",
                 },
               ].map((item) => (
                 <motion.div key={item.title} variants={fadeInUp}>
@@ -489,7 +489,7 @@ export default function Landing() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
-                Unlock the most powerful tools with Academia Premium
+                Unlock the most powerful tools with Premium
               </h2>
               <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 Get access to advanced features and tools to supercharge your
@@ -510,10 +510,10 @@ export default function Landing() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-500 to-gray-700 rounded-lg transform rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
-                  src="/academialogo.png"
+                  src="/"
+                  alt="Logo"
                   width={200}
                   height={200}
-                  alt="Academia.edu research tools interface"
                   className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
                 />
               </div>
@@ -576,10 +576,10 @@ export default function Landing() {
               <div className="relative order-1 lg:order-2">
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg transform -rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
-                  src="/academialogo.png"
+                  src="/"
                   width={200}
                   height={200}
-                  alt="Academia.edu analytics and publishing interface"
+                  alt=" analytics and publishing interface"
                   className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
                 />
               </div>
@@ -672,8 +672,8 @@ export default function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
               <Image
-                src="/academialogo.png"
-                alt="Academia.edu Logo"
+                src="/"
+                alt="Logo"
                 width={150}
                 height={40}
                 className="dark:invert mb-4"
@@ -688,7 +688,7 @@ export default function Landing() {
                 links: [
                   { name: "Features", href: "/features" },
                   { name: "Pricing", href: "/pricing" },
-                  { name: "Academia Premium", href: "/pricing" },
+                  { name: "Premium", href: "/pricing" },
                   { name: "Institutions", href: "/" },
                 ],
               },

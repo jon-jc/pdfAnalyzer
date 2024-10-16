@@ -211,8 +211,8 @@ export default function Analytics() {
               <a href="/" className="flex-shrink-0">
                 <Image
                   className="h-8 w-auto"
-                  src="/academialogo.png"
-                  alt="Academia Logo"
+                  src="/"
+                  alt="Logo"
                   height={32}
                   width={120}
                 />
