@@ -7,8 +7,9 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Academia.EDU Frontend Restyle",
-  description: "The next generation of Academia.EDU",
+  title:
+    "Frontend Redesign for an Academic Research Platform with Research Paper Analyzer",
+  description: "A frontend redesign for an academic research platform.",
 };
 
 export default function RootLayout({
