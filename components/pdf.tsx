@@ -440,7 +440,7 @@ export default function PDFAnalyzer() {
                         <FileUp className="w-10 h-10 mb-3 text-gray-400" />
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                           <span className="font-semibold">Click to upload</span>{" "}
-                          or drag and drop
+                          or drag and drop your PDF
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">
                           PDF (MAX. 20MB)

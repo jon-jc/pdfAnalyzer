@@ -492,7 +492,7 @@ export default function Analytics() {
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
                   This page shows details about visitors to your papers over the
                   last {timeRange} days. To get more visitors, make sure youve
-                  uploaded and tagged all your papers.
+                  uploaded and tagged all your papers
                 </p>
                 <Button>Upload a Paper</Button>
               </CardContent>

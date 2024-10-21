@@ -286,11 +286,6 @@ export default function Auth() {
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-center text-gray-500">
-            By signing up, you agree to our{" "}
-            <a href="#" className="text-primary hover:underline">
-              Terms of Service
-            </a>{" "}
-            and{" "}
             <a href="#" className="text-primary hover:underline">
               Privacy Policy
             </a>
