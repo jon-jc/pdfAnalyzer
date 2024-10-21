@@ -752,7 +752,6 @@ export default function Landing() {
                 { name: "Facebook", href: "https://facebook.com" },
                 { name: "Twitter", href: "https://twitter.com" },
                 { name: "LinkedIn", href: "https://linkedin.com" },
-                { name: "GitHub", href: "https://github.com" },
               ].map((platform) => (
                 <a
                   key={platform.name}
