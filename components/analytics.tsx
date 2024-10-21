@@ -53,6 +53,7 @@ import {
   Users,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 ChartJS.register(
   CategoryScale,
@@ -208,15 +209,15 @@ export default function Analytics() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <a href="/" className="flex-shrink-0">
+              <Link href="/" className="flex items-center space-x-2">
                 <Image
-                  className="h-8 w-auto"
-                  src="/"
+                  src="/logo.png"
                   alt="Logo"
-                  height={32}
-                  width={120}
+                  width={40}
+                  height={40}
+                  className="max-w-full h-auto dark:invert transition-all duration-300 hover:opacity-80 rounded-lg"
                 />
-              </a>
+              </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {[
