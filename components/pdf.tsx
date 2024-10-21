@@ -360,13 +360,13 @@ export default function PDFAnalyzer() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Link href="/">
+            <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="/"
+                src="/logo.png"
                 alt="Logo"
-                width={150}
+                width={40}
                 height={40}
-                className="dark:invert transition-all duration-300 hover:opacity-80"
+                className="max-w-full h-auto dark:invert transition-all duration-300 hover:opacity-80 rounded-lg"
               />
             </Link>
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
