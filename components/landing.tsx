@@ -130,11 +130,11 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/"
+              src="/logo.png"
               alt="Logo"
-              width={150}
+              width={40}
               height={40}
-              className="dark:invert transition-all duration-300 hover:opacity-80"
+              className="max-w-full h-auto dark:invert transition-all duration-300 hover:opacity-80 rounded-lg"
             />
           </Link>
           <div className="flex items-center space-x-4">
@@ -510,11 +510,11 @@ export default function Landing() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-500 to-gray-700 rounded-lg transform rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
-                  src="/"
+                  src="/logo.png"
                   alt="Logo"
                   width={200}
                   height={200}
-                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
+                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200 max-w-full h-auto"
                 />
               </div>
               <div className="flex flex-col justify-center space-y-4">
@@ -576,11 +576,11 @@ export default function Landing() {
               <div className="relative order-1 lg:order-2">
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg transform -rotate-3 scale-105 opacity-20 dark:opacity-40"></div>
                 <Image
-                  src="/"
+                  src="/logo.png"
                   width={200}
                   height={200}
-                  alt=" analytics and publishing interface"
-                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200"
+                  alt="Analytics and publishing interface"
+                  className="relative rounded-lg shadow-xl dark:bg-gray-800 transition-colors duration-200 max-w-full h-auto"
                 />
               </div>
             </div>
@@ -672,11 +672,11 @@ export default function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
               <Image
-                src="/"
+                src="/logo.png"
                 alt="Logo"
                 width={150}
                 height={40}
-                className="dark:invert mb-4"
+                className="max-w-full h-auto dark:invert mb-4"
               />
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 © THIS IS FOR DEMONSTRATION PURPOSES ONLY.
